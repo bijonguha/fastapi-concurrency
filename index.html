@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #response {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 100px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+        }
+        .time-info {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>FastAPI Test Interface</h1>
+    <div class="button-container">
+        <button onclick="makeGetRequest()">Test GET</button>
+        <button onclick="makePostRequest()" id="postButton">Test POST (3s delay)</button>
+    </div>
+    <div id="response">Response will appear here...</div>
+    <div id="timeInfo" class="time-info"></div>
+
+    <script>
+        async function makeGetRequest() {
+            try {
+                const response = await fetch('http://localhost:8005/');
+                const data = await response.json();
+                document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+                document.getElementById('timeInfo').textContent = '';
+            } catch (error) {
+                document.getElementById('response').textContent = 'Error: ' + error.message;
+            }
+        }
+
+        async function makePostRequest() {
+            const button = document.getElementById('postButton');
+            button.disabled = true;
+            document.getElementById('response').textContent = 'Waiting for response (3s delay)...';
+            document.getElementById('timeInfo').textContent = '';
+            
+            try {
+                const response = await fetch('http://localhost:8005/delay', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                const data = await response.json();
+                document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+                document.getElementById('timeInfo').textContent = `Start Time: ${data.start_time}\nEnd Time: ${data.end_time}`;
+            } catch (error) {
+                document.getElementById('response').textContent = 'Error: ' + error.message;
+            } finally {
+                button.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
