@@ -47,7 +47,7 @@ async def delayed_response():
 
 ## 2. Using Asynchronous Sleep and Non-Blocking I/O
 
-### Example: `main_sync.py`
+### Example: `main_async.py`
 
 To fully leverage FastAPI's asynchronous capabilities, you should use non-blocking I/O functions such as `await asyncio.sleep()`. In the `main_sync.py` example, an asynchronous sleep is used:
 
