@@ -24,13 +24,13 @@ async def delayed_response():
     start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     logger.info(f"Starting delay at {start_time}")
     
-    time.sleep(3)  # Blocking call
+    time.sleep(5)  # Blocking call
     
     end_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     logger.info(f"Ending delay at {end_time}")
     
     response = {
-        "message": "Response after 3 seconds delay",
+        "message": "Response after 5 seconds delay",
         "start_time": start_time,
         "end_time": end_time
     }
@@ -65,7 +65,7 @@ async def delayed_response():
     logger.info(f"Ending delay at {end_time}")
     
     response = {
-        "message": "Response after 3 seconds delay",
+        "message": "Response after 5 seconds delay",
         "start_time": start_time,
         "end_time": end_time
     }
@@ -101,7 +101,7 @@ async def delayed_response_threadpool():
     logger.info(f"Ending delay at {end_time}")
     
     response = {
-        "message": "Response after 3 seconds delay",
+        "message": "Response after 5 seconds delay",
         "start_time": start_time,
         "end_time": end_time
     }
@@ -142,7 +142,7 @@ async def delayed_response():
     logger.info(f"Ending delay at {end_time} on worker id: {worker_id}")
     
     response = {
-        "message": "Response after 3 seconds delay",
+        "message": "Response after 5 seconds delay",
         "start_time": start_time,
         "end_time": end_time,
         "worker_id": worker_id
@@ -152,7 +152,7 @@ async def delayed_response():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main_worker:app", host="0.0.0.0", port=8005, workers=4)
+    uvicorn.run("main_worker:app", host="0.0.0.0", port=8005, workers=2)
 ```
 
 **Key Points:**
