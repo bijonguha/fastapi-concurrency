@@ -48,7 +48,7 @@
     <h1>FastAPI Test Interface</h1>
     <div class="button-container">
         <button onclick="makeGetRequest()">Test GET</button>
-        <button onclick="makePostRequest()" id="postButton">Test POST (3s delay)</button>
+        <button onclick="makePostRequest()" id="postButton">Test POST (5s delay)</button>
     </div>
     <div id="response">Response will appear here...</div>
     <div id="timeInfo" class="time-info"></div>
@@ -68,7 +68,7 @@
         async function makePostRequest() {
             const button = document.getElementById('postButton');
             button.disabled = true;
-            document.getElementById('response').textContent = 'Waiting for response (3s delay)...';
+            document.getElementById('response').textContent = 'Waiting for response (5s delay)...';
             document.getElementById('timeInfo').textContent = '';
             
             try {

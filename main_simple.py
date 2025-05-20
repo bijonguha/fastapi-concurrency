@@ -42,13 +42,13 @@ async def delayed_response():
     start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     logger.info(f"Starting delay at {start_time}")
     
-    time.sleep(3)  # Sleep for 3 seconds
+    time.sleep(5)  # Sleep for 3 seconds
     
     end_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     logger.info(f"Ending delay at {end_time}")
     
     response = {
-        "message": "Response after 3 seconds delay",
+        "message": "Response after 5 seconds delay",
         "start_time": start_time,
         "end_time": end_time
     }

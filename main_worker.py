@@ -52,7 +52,7 @@ async def delayed_response():
     logger.info(f"Ending delay at {end_time} on worker id: {worker_id}")
     
     response = {
-        "message": "Response after 3 seconds delay",
+        "message": "Response after 5 seconds delay",
         "start_time": start_time,
         "end_time": end_time,
         "worker_id": worker_id
@@ -62,4 +62,4 @@ async def delayed_response():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main_worker:app", host="0.0.0.0", port=8005, workers=4)
+    uvicorn.run("main_worker:app", host="0.0.0.0", port=8005, workers=2)

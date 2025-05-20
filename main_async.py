@@ -47,7 +47,7 @@ async def delayed_response():
     logger.info(f"Ending delay at {end_time}")
     
     response = {
-        "message": "Response after 3 seconds delay",
+        "message": "Response after 5 seconds delay",
         "start_time": start_time,
         "end_time": end_time
     }

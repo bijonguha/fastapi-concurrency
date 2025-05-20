@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 async def blocking_sleep():
-    time.sleep(3)  # This is the blocking call
+    time.sleep(5)  # This is the blocking call
     return
 
 @app.post("/delay")
@@ -34,7 +34,7 @@ async def delayed_response_threadpool():
     logger.info(f"Ending delay at {end_time}")
     
     response = {
-        "message": "Response after 3 seconds delay",
+        "message": "Response after 5 seconds delay",
         "start_time": start_time,
         "end_time": end_time
     }
